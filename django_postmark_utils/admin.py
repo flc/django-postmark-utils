@@ -11,6 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from .models import Bounce, Delivery, Email, Message
 from .utils import ResendEmailMessage
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -24,7 +25,7 @@ class ReadOnlyModelAdminMixin(object):
 
     def get_actions(self, request):
         actions = super().get_actions(request)
-        del actions['delete_selected']
+        actions.pop('delete_selected', None)
         return actions
 
 
